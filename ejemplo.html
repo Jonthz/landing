@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agencia Digital Creativa | Soluciones Innovadoras</title>
-    <meta name="description" content="Creamos experiencias digitales innovadoras que transforman marcas y negocios.">
+    <title>Te ayudamos a crear un portafolio web que muestre tu talento y logros de manera profesional</title>
+    <meta name="description" content="Creamos experiencias digitales innovadoras que transforman tanto a las personas como a los negocios.">
+    
+    <link rel="stylesheet" href="animation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -25,30 +28,9 @@
             }
         }
     </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        .hero-text {
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            line-height: 0.9;
-        }
-        
-        .project-card:hover .project-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .marquee {
-            animation: marquee 20s linear infinite;
-        }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-    </style>
+    
 </head>
-<body class="font-sans bg-light text-dark">
+<body class="opacity-0 transition-opacity duration-1000 ease-in-out" onload="document.body.classList.add('opacity-100')">
     <!-- Navegación -->
     <header class="fixed w-full z-50 bg-white bg-opacity-90 backdrop-blur-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -67,14 +49,13 @@
         </nav>
     </header>
 
-    <!-- Sección Hero -->
     <section class="min-h-screen flex items-center pt-20">
         <div class="container mx-auto px-6">
             <h1 class="hero-text font-display font-bold uppercase mb-8">
                 Creamos <span class="text-primary">experiencias</span><br>
                 digitales que <span class="text-secondary">transforman</span>
             </h1>
-            <p class="text-xl max-w-2xl mb-12">
+            <p class="text-xl max-w-2xl mb-12 hero-text2">
                 Una agencia digital integral que crea soluciones innovadoras para ayudar a las marcas a crecer y conectar con sus audiencias.
             </p>
             <div class="flex flex-wrap gap-4">
@@ -282,10 +263,15 @@
 </html>
 
 <script>
-    function changeLanguage(lang) {
-        const htmlElement = document.documentElement;
-        htmlElement.lang = lang;
-    }
+    // function changeLanguage(lang) {
+    //     const htmlElement = document.documentElement;
+    //     htmlElement.lang = lang;
+    // }
+
+    window.addEventListener("DOMContentLoaded", (event) => {
+        document.getElementById('phrase').textContent = localStorage.getItem("phrase") || "Stand out from the crowd. Your professional Web Portfolio starts here...";
+    });
+    
 </script>
 
 <div class="fixed bottom-4 right-4">

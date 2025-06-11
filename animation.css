@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+.hero-text {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 0.9;
+    animation: moveText 3s ease-in-out infinite;
+}
+.hero-text2{
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 0.9;
+    animation: moveText2 3s ease-in-out infinite;    
+
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.marquee {
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes moveText {
+    0% {
+    opacity: 0;
+    transform: translateX(-100%);
+    }
+    100% {
+    opacity: 1;
+    transform: translateX(0%);
+    }
+}
+@keyframes moveText2 {
+    0% {
+    opacity: 0;
+    transform: translateX(-300%);
+    }
+    100% {
+    opacity: 1;
+    transform: translateX(0%);
+    }
+}
+.hero-text {
+    animation: moveText 2.5s ease-in-out 1;
+}
+.hero-text2
+{   
+    visibility: visible;
+    animation: moveText2 5s ease-in-out 1;
+
+}
