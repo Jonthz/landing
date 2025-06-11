@@ -2,7 +2,10 @@
 
 // Importar la función fetchFakerData
 import { fetchFakerData } from './functions.js';
+import {  getVotes,
+ saveVote } from './firebase.js';
 
+ 
 (function() {
     /**
      * Muestra una notificación tipo toast en la pantalla.
@@ -30,6 +33,45 @@ import { fetchFakerData } from './functions.js';
         if (demoElement) {
             demoElement.addEventListener('click', () => {
                 window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+            });
+        }
+    };
+    
+    /**
+     * Habilita el formulario de votación para guardar datos en Firebase.
+     * Agrega un event listener al formulario que envía los datos a Firebase
+     * cuando se realiza un submit.
+     * 
+     * @returns {void} No retorna ningún valor.
+     */
+    const enableForm = () => {
+        const form = document.getElementById('form_voting');
+        if (form) {
+            form.addEventListener('submit', async (event) => {
+                // Prevenir el comportamiento por defecto del formulario
+                event.preventDefault();
+                
+                // Obtener el valor del campo de entrada
+                const productSelect = document.getElementById('select_product');
+                const productID = productSelect.value;
+                
+                // Llamar a la función saveVote con el valor obtenido
+                const result = await saveVote(productID);
+                
+                // Mostrar resultado (opcional)
+                if (result.success) {
+                    console.log(result.message);
+                    // Aquí podrías mostrar un mensaje de éxito al usuario
+                    
+                    // Actualizar la tabla de votos después de guardar un voto exitosamente
+                    await displayVotes();
+                } else {
+                    console.error(result.message, result.error);
+                    // Aquí podrías mostrar un mensaje de error al usuario
+                }
+                
+                // Limpiar el formulario
+                form.reset();
             });
         }
     };
@@ -132,8 +174,95 @@ import { fetchFakerData } from './functions.js';
         }
     };
     
+    /**
+     * Obtiene y muestra los votos actuales en una tabla HTML.
+     * 
+     * @async
+     * @returns {Promise<void>} No retorna ningún valor.
+     */
+    const displayVotes = async () => {
+        try {
+            // Obtener el elemento donde se mostrarán los resultados
+            const resultsContainer = document.getElementById('results');
+            if (!resultsContainer) return;
+            
+            // Mostrar un indicador de carga
+            resultsContainer.innerHTML = '<p class="text-center">Cargando votos...</p>';
+            
+            // Obtener los votos usando la función getVotes
+            const votes = await getVotes();
+            
+            if (!votes) {
+                resultsContainer.innerHTML = '<p class="text-center">No hay votos disponibles</p>';
+                return;
+            }
+            
+            // Procesar los votos para contar por producto
+            const voteCount = {};
+            
+            // Iterar sobre los votos y contar por productID
+            Object.values(votes).forEach(vote => {
+                const productID = vote.productID;
+                if (!voteCount[productID]) {
+                    voteCount[productID] = 0;
+                }
+                voteCount[productID]++;
+            });
+            
+            // Crear la tabla HTML
+            let tableHTML = `
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Producto</th>
+                            <th scope="col" class="px-6 py-3">Total de Votos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            // Agregar filas a la tabla
+            Object.entries(voteCount).forEach(([productID, count]) => {
+                tableHTML += `
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                            Producto ${productID}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${count}
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            // Cerrar la tabla
+            tableHTML += `
+                    </tbody>
+                </table>
+            </div>
+            `;
+            
+            // Mostrar la tabla en el contenedor
+            resultsContainer.innerHTML = tableHTML;
+            
+        } catch (error) {
+            console.error('Error al mostrar votos:', error);
+            const resultsContainer = document.getElementById('results');
+            if (resultsContainer) {
+                resultsContainer.innerHTML = `
+                    <div class="p-4 bg-red-50 rounded-lg dark:bg-gray-700">
+                        <p class="text-red-500 dark:text-red-400">Error al cargar los votos: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+    };
+    
     // Llamar a las funciones
     showToast();
     showVideo();
     loadData();
+    enableForm(); // Invocar la función enableForm
+    displayVotes(); // Invocar la función displayVotes para mostrar los votos actuales
 })();
