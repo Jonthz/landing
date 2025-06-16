@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>[Tu nombre aquí] | Portafolio Profesional</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2C7A7B",
+            secondary: "#EDF2F7",
+            accent: "#38B2AC",
+            text: "#2D3748"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            display: ["Merriweather", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:ital,wght@0,700;1,400&display=swap');
+  </style>
+</head>
+<body class="font-sans text-text bg-white scroll-smooth">
+
+  <!-- Header -->
+  <header class="bg-white shadow fixed top-0 w-full z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-primary">[Tu nombre aquí]</h1>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#sobre-mi" class="hover:text-primary">Sobre mí</a>
+        <a href="#servicios" class="hover:text-primary">Servicios</a>
+        <a href="#proyectos" class="hover:text-primary">Publicaciones</a>
+        <a href="#contacto" class="hover:text-primary">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="pt-28 pb-20 bg-secondary">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-display font-bold text-primary mb-4">Salud con ciencia y empatía</h2>
+      <p class="max-w-xl mx-auto text-lg text-gray-700 mb-6">
+        Soy [tu especialidad aquí] con enfoque en [tu enfoque aquí]. Mi compromiso es brindar atención basada en evidencia, con trato humano.
+      </p>
+      <a href="#contacto" class="inline-block bg-accent text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-primary transition">Agendar una cita</a>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section id="sobre-mi" class="py-20 bg-white">
+    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <img src="https://via.placeholder.com/500x500?text=Foto+Profesional" alt="[Tu nombre aquí]" class="rounded-xl shadow-lg w-full object-cover">
+      <div>
+        <h3 class="text-3xl font-bold mb-4 text-primary">Sobre mí</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Tengo experiencia en [años de experiencia] trabajando en [campo o contexto]. Me apasiona promover la salud integral a través de la educación, la prevención y la atención personalizada.
+        </p>
+        <p class="text-gray-700">
+          Creo en una medicina centrada en la persona, con escucha activa y acompañamiento compasivo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-20 bg-secondary">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold text-center mb-12 text-primary">Servicios</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+          <h4 class="text-xl font-semibold mb-2 text-primary">[Servicio 1]</h4>
+          <p class="text-gray-600">[Descripción breve del servicio 1]</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+          <h4 class="text-xl font-semibold mb-2 text-primary">[Servicio 2]</h4>
+          <p class="text-gray-600">[Descripción breve del servicio 2]</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+          <h4 class="text-xl font-semibold mb-2 text-primary">[Servicio 3]</h4>
+          <p class="text-gray-600">[Descripción breve del servicio 3]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publicaciones o proyectos -->
+  <section id="proyectos" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold text-center text-primary mb-12">Publicaciones destacadas</h3>
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="border-l-4 border-primary pl-6">
+          <h4 class="text-xl font-semibold text-primary">[Título de publicación o proyecto]</h4>
+          <p class="text-gray-700 mt-2">[Revista / Congreso · Año]</p>
+        </div>
+        <div class="border-l-4 border-primary pl-6">
+          <h4 class="text-xl font-semibold text-primary">[Título de publicación o proyecto]</h4>
+          <p class="text-gray-700 mt-2">[Revista / Congreso · Año]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-20 bg-secondary">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold text-primary mb-4">¿Agendamos una consulta?</h3>
+      <p class="text-gray-700 mb-6 max-w-xl mx-auto">Puedes escribirme para agendar una cita o consultar cualquier información adicional.</p>
+      <a href="mailto:[tu-email@aqui.com]" class="inline-block bg-accent text-white px-6 py-3 rounded-full font-semibold hover:bg-primary transition">Contáctame</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white text-center py-6 text-gray-500 text-sm">
+    © [Año actual] [Tu nombre aquí] · Todos los derechos reservados
+  </footer>
+</body>
+</html>

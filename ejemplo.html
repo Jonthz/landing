@@ -94,8 +94,7 @@
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-display font-bold mb-16">Proyectos Seleccionados</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Proyecto 1 -->
+           <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="project-card relative overflow-hidden rounded-2xl">
                     <img src="https://picsum.photos/800/600?random=1" alt="Proyecto plataforma digital" class="w-full h-full object-cover" loading="lazy">
                     <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
@@ -105,7 +104,6 @@
                     </div>
                 </div>
                 
-                <!-- Proyecto 2 -->
                 <div class="project-card relative overflow-hidden rounded-2xl">
                     <img src="https://picsum.photos/800/600?random=2" alt="Proyecto identidad de marca" class="w-full h-full object-cover" loading="lazy">
                     <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
@@ -115,7 +113,7 @@
                     </div>
                 </div>
                 
-                <!-- Proyecto 3 -->
+                
                 <div class="project-card relative overflow-hidden rounded-2xl md:col-span-2">
                     <img src="https://picsum.photos/1600/800?random=3" alt="Proyecto plataforma e-commerce" class="w-full h-full object-cover" loading="lazy">
                     <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
@@ -123,7 +121,7 @@
                         <p class="text-white mb-4">Experiencia de compra de próxima generación</p>
                         <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
                     </div>
-                </div>
+                </div>-->
             </div>
             
             <div class="text-center mt-16">
@@ -131,8 +129,41 @@
                     Ver todos los proyectos
                 </a>
             </div>
+        </div> 
+    </section> 
+
+      <!-- Panel de selección de plantillas -->
+    <div class="flex items-center justify-center mb-8 gap-4">
+        <!-- Flecha izquierda -->
+        <button id="prev-template" class="p-2 rounded-full bg-light hover:bg-primary hover:text-white transition">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <!-- Lista de plantillas -->
+        <div id="template-list" class="flex overflow-x-auto gap-4 scrollbar-hide">
+            <!-- Los elementos se llenan por JS -->
+        </div>
+        <!-- Flecha derecha -->
+        <button id="next-template" class="p-2 rounded-full bg-light hover:bg-primary hover:text-white transition">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <!-- Plantillas PortFolioWebs -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-display font-bold mb-8 text-center">Vista previa de la Plantilla 1</h2>
+            <div class="flex justify-center">
+                <iframe 
+                    id="plantilla-iframe"
+                    src="public/plantillas/plantillaAdministracion.html" 
+                    title="Plantilla 1"
+                    class="w-full md:w-3/4 h-[700px] border-2 border-gray-200 rounded-xl shadow-lg"
+                    loading="lazy"
+                ></iframe>
+            </div>
         </div>
     </section>
+
 
     <!-- Servicios -->
     <section class="py-20 bg-white">
@@ -259,6 +290,7 @@
             </div>
         </div>
     </footer>
+    <script src="src/components/plantillas-panel.js"></script>
 </body>
 </html>
 
