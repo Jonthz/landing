@@ -1,28 +1,28 @@
 const templates = [
     {
         name: "Administración",
-        src: "public/plantillas/plantillaAdministracion.html",
+        src: "/plantillas/plantillaAdministracion.html",
         img: "Images/imgPlantillaAdmi.webp"
     },
     {
         name: "Salud",
-        src: "public/plantillas/plantillaSalud.html",
+        src: "/plantillas/plantillaSalud.html",
         img: "Images/imgPlantillaSalud.webp"
     },
     // Agrega más plantillas para probar el efecto carrusel
     {
         name: "E-commerce",
-        src: "public/plantillas/plantillaAdministracion.html",
+        src: "/plantillas/plantillaAdministracion.html",
         img: "Images/imgPlantillaAdmi.webp"
     },
     {
         name: "Blog",
-        src: "public/plantillas/plantillaAdministracion.html",
+        src: "/plantillas/plantillaAdministracion.html",
         img: "Images/imgPlantillaAdmi.webp"
     },
     {
         name: "Portfolio",
-        src: "public/plantillas/plantillaAdministracion.html",
+        src: "/plantillas/plantillaAdministracion.html",
         img: "Images/imgPlantillaAdmi.webp"
     }
 ];
@@ -31,6 +31,8 @@ let currentIndex = 0;
 let isTransitioning = false;
 
 window.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM cargado, inicializando carrusel");
+    
     const templateList = document.getElementById('template-list');
     const iframe = document.getElementById('plantilla-iframe');
     const prevBtn = document.getElementById('prev-template');
@@ -54,86 +56,87 @@ window.addEventListener('DOMContentLoaded', () => {
             animation: fadeIn 0.3s ease-in forwards;
         }
         
-        /* Estilos para el carrusel */
+        /* Estilos simplificados para el carrusel */
         #template-list {
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow-x: hidden;
+            overflow-x: auto;
             position: relative;
             padding: 1rem 0;
             width: 100%;
             scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        #template-list::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
         
         /* Tarjeta del carrusel */
         .carousel-item {
+            flex: 0 0 auto;
             transition: all 0.5s ease;
             margin: 0 0.5rem;
             transform-origin: center center;
         }
         
-        /* Efecto para los elementos no seleccionados */
+        /* Efectos de escala */
         .carousel-item:not(.active) {
             transform: scale(0.85);
             opacity: 0.7;
         }
         
-        /* Efecto para el elemento activo */
         .carousel-item.active {
             transform: scale(1);
             opacity: 1;
         }
-            /* Estilos para el carrusel */
-#template-list {
-    display: flex;
-    align-items: center;
-    /* Cambiado de justify-content: center a justify-content: flex-start */
-    justify-content: flex-start;
-    overflow-x: auto;
-    position: relative;
-    padding: 1rem 0;
-    width: 100%;
-    scroll-behavior: smooth;
-    /* Esconder scrollbar */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-}
-
-#template-list::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-}
-
-/* Tarjeta del carrusel */
-.carousel-item {
-    flex: 0 0 auto; /* Importante: evita que los elementos se estiren */
-    transition: all 0.5s ease;
-    margin: 0 0.5rem;
-    transform-origin: center center;
-}
+        
+        /* Espaciadores */
+        .carousel-spacer {
+            flex: 0 0 auto;
+        }
     `;
     document.head.appendChild(style);
 
     // Verificar que todos los elementos existen
-    if (!templateList) console.error('No se encontró el elemento #template-list');
-    if (!iframe) console.error('No se encontró el elemento #plantilla-iframe');
-    if (!prevBtn) console.error('No se encontró el elemento #prev-template');
-    if (!nextBtn) console.error('No se encontró el elemento #next-template');
+    if (!templateList) {
+        console.error('No se encontró el elemento #template-list');
+        return;
+    }
+    if (!iframe) {
+        console.error('No se encontró el elemento #plantilla-iframe');
+        return;
+    }
+    if (!prevBtn) {
+        console.error('No se encontró el elemento #prev-template');
+        return;
+    }
+    if (!nextBtn) {
+        console.error('No se encontró el elemento #next-template');
+        return;
+    }
+    
+    console.log("Elementos encontrados correctamente");
+
+    // Array para almacenar referencias a los elementos de plantilla
+    let templateItems = [];
 
     function renderTemplateList() {
-        if (!templateList) return;
-        
+        console.log("Renderizando lista de plantillas");
         templateList.innerHTML = '';
+        templateItems = []; // Reiniciar el array
         
-        // Añadir elemento espaciador al principio
+        // Espaciador inicial
         const spacerStart = document.createElement('div');
-        spacerStart.className = 'flex-grow-0 w-[calc(50%-80px)] min-w-[80px]';
+        spacerStart.className = 'carousel-spacer';
+        spacerStart.style.width = 'calc(50% - 88px)';
         templateList.appendChild(spacerStart);
         
         templates.forEach((tpl, idx) => {
             const item = document.createElement('button');
             
-            // Añadir clase carousel-item para los efectos del carrusel
             item.className = `relative overflow-hidden rounded-lg transition-all duration-200 w-44 h-32 carousel-item
                 ${idx === currentIndex ? 'active ring-2 ring-primary ring-offset-2' : 'hover:ring-1 hover:ring-gray-300'}`;
             
@@ -150,48 +153,49 @@ window.addEventListener('DOMContentLoaded', () => {
             item.onclick = () => {
                 if (isTransitioning) return;
                 currentIndex = idx;
+                console.log(`Cambiando a plantilla ${idx}: ${tpl.name}`);
                 smoothUpdateIframe();
                 renderTemplateList();
-                centerActiveItem();
             };
             
             templateList.appendChild(item);
+            templateItems.push(item); // Guardar referencia al elemento
         });
         
-        // Añadir elemento espaciador al final
+        // Espaciador final
         const spacerEnd = document.createElement('div');
-        spacerEnd.className = 'flex-grow-0 w-[calc(50%-80px)] min-w-[80px]';
+        spacerEnd.className = 'carousel-spacer';
+        spacerEnd.style.width = 'calc(50% - 88px)';
         templateList.appendChild(spacerEnd);
         
-        // Centrar el elemento activo después de renderizar
-        centerActiveItem();
+        // Centrar después de renderizar
+        setTimeout(centerActiveItem, 50);
     }
 
-    // Función mejorada para centrar el elemento activo en el carrusel
+    // Función corregida para centrar el elemento activo
     function centerActiveItem() {
-        if (!templateList || !templateList.children[currentIndex]) return;
+        if (!templateItems[currentIndex]) {
+            console.error("No se puede centrar: elemento no encontrado");
+            return;
+        }
         
-        // Esperamos un momento para asegurar que el DOM está actualizado
-        setTimeout(() => {
-            const activeItem = templateList.children[currentIndex];
-            
-            // Calculamos el centro del viewport
-            const containerCenter = templateList.offsetWidth / 2;
-            
-            // Calculamos la posición del centro del elemento activo
-            const itemCenter = activeItem.offsetLeft + (activeItem.offsetWidth / 2);
-            
-            // Calculamos cuánto debemos desplazar
-            const scrollAmount = itemCenter - containerCenter;
-            
-            // Aplicamos el desplazamiento con animación suave
-            templateList.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-            
-            console.log('Centrando elemento:', currentIndex, 'ScrollAmount:', scrollAmount);
-        }, 50);
+        const activeItem = templateItems[currentIndex];
+        
+        // Calcular la posición para centrar
+        const containerWidth = templateList.offsetWidth;
+        const itemOffsetLeft = activeItem.offsetLeft;
+        const itemWidth = activeItem.offsetWidth;
+        
+        // Calcular el scroll necesario para centrar el elemento
+        const scrollTo = Math.max(0, itemOffsetLeft - (containerWidth / 2) + (itemWidth / 2));
+        
+        console.log(`Centrando: item ${currentIndex}, scroll a ${scrollTo}px, offsetLeft: ${itemOffsetLeft}`);
+        
+        // Aplicar scroll suave
+        templateList.scrollTo({
+            left: scrollTo,
+            behavior: 'smooth'
+        });
     }
 
     function updateIframe() {
@@ -204,6 +208,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (!iframe || isTransitioning) return;
         
         isTransitioning = true;
+        console.log("Iniciando transición de iframe");
         
         // Fade out
         iframe.classList.add('fade-out');
@@ -213,8 +218,9 @@ window.addEventListener('DOMContentLoaded', () => {
             iframe.src = templates[currentIndex].src;
             iframe.title = templates[currentIndex].name;
             
-            // Verificar si la carga se completa
+            // Cuando la nueva página termine de cargar
             iframe.onload = () => {
+                console.log("Iframe cargado, iniciando fade-in");
                 // Fade in
                 iframe.classList.remove('fade-out');
                 iframe.classList.add('fade-in');
@@ -223,12 +229,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     iframe.classList.remove('fade-in');
                     isTransitioning = false;
+                    console.log("Transición completada");
                 }, 300);
             };
             
-            // Por si el evento onload no se dispara, establecer un tiempo máximo
+            // Por si el evento onload no se dispara
             setTimeout(() => {
                 if (isTransitioning) {
+                    console.log("Fallback por timeout del iframe");
                     iframe.classList.remove('fade-out');
                     iframe.classList.add('fade-in');
                     setTimeout(() => {
@@ -245,10 +253,9 @@ window.addEventListener('DOMContentLoaded', () => {
         
         if (isTransitioning) return;
         currentIndex = (currentIndex - 1 + templates.length) % templates.length;
+        console.log(`Cambiando a plantilla anterior: ${currentIndex}`);
         smoothUpdateIframe();
         renderTemplateList();
-        // Llamar a centerActiveItem después de renderizar
-        centerActiveItem();
     };
     
     nextBtn.onclick = (e) => {
@@ -256,15 +263,17 @@ window.addEventListener('DOMContentLoaded', () => {
         
         if (isTransitioning) return;
         currentIndex = (currentIndex + 1) % templates.length;
+        console.log(`Cambiando a plantilla siguiente: ${currentIndex}`);
         smoothUpdateIframe();
         renderTemplateList();
-        // Llamar a centerActiveItem después de renderizar
-        centerActiveItem();
     };
 
+    console.log("Inicializando carrusel");
     renderTemplateList();
     updateIframe();
     
-    // Ajustar cuando la ventana cambie de tamaño
+    // Reajustar cuando cambie el tamaño de la ventana
     window.addEventListener('resize', centerActiveItem);
+    
+    console.log("Carrusel inicializado correctamente");
 });

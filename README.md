@@ -12,6 +12,6 @@ La página está enfocada en generar conversiones mediante un diseño atractivo,
 
 ## 🛠 Tecnologías utilizadas
 
-- HTML5 / CSS3  
+- HTML5 / CSS3 / Tailwind
 - JavaScript  
-
+- Vite
