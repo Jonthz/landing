@@ -1,225 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón con Efecto de Resplandor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Colores proporcionados */
+        :root {
+            --color-primary: #134B7C;  /* Fondo del botón */
+            --color-secondary: #404B56;  /* Borde y texto */
+            --color-accent: #404B56;  /* Acuerdo con la paleta */
+            --color-glow: #F5A623; /* Resplandor dorado-amarillo */
+            --color-white: #FFFFFF;
+        }
 
+        /* Animación personalizada para el efecto de resplandor con doble parpadeo */
+        @keyframes double-aurora-effect {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 4px var(--color-primary);
+            }
+            25% {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px 10px var(--color-glow); /* Resplandor dorado */
+            }
+            50% {
+                transform: scale(1);
+                box-shadow: 0 0 0 4px var(--color-primary);
+            }
+            75% {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px 10px var(--color-glow); /* Resplandor dorado */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 4px var(--color-primary);
+            }
+        }
 
-<body class="opacity-0 transition-opacity duration-1000 ease-in-out" onload="document.body.classList.add('opacity-100')">
-    
+        /* Clase para activar el efecto */
+        .animate-double-aurora {
+            animation: double-aurora-effect 1s ease-out;
+        }
+    </style>
+</head>
+<body class="flex justify-center items-center h-screen bg-gray-100">
 
-   
+    <!-- Botón con color de fondo personalizado -->
+    <button id="auroraButton" class="font-semibold py-2 px-6 rounded-lg border-2 border-transparent transition duration-300 hover:bg-transparent hover:text-white"
+    style="background-color: var(--color-primary); color: var(--color-secondary); border-color: var(--color-secondary)">
+        ¡Haz clic en mí!
+    </button>
 
-    <!-- Clientes -->
-     <section id="after-ver-mas" class="bg-gray-100 py-12" style="display: none;">
+    <script>
+        // Obtener el botón
+        const auroraButton = document.getElementById("auroraButton");
 
-        <div class="container mx-auto flex items-start justify-center px-4" id="preguntaClave">
-            <div class="w-full h-96 max-w-screen-md flex flex-col items-center justify-start mb-8 bg-gray-50 p-6">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">¿Por qué tener un portafolio web?</h2>
-                <p class="text-lg text-gray-600 text-center">El contar con un
-                    <span class="tooltip relative text-blue-800 group" id="tooltip">                 
-                        portafolio web              
-                        <span id="tooltip-container" class="w-52 min-h-10 p-4 text-xs bg-[#404B56] text-white shadow-lg rounded-lg absolute z-50 hidden opacity-0">
-                            Un portafolio web es una herramienta esencial para mostrar tus habilidades, proyectos y logros de manera profesional.
-                        </span>
-                    </span>
-                    es fundamental para destacar en el competitivo mundo laboral actual. Un portafolio bien diseñado no solo muestra tu trabajo, sino que también refleja tu personalidad y profesionalismo. Aquí te contamos por qué es importante:</p>
-                </p>
-            </div>
-        </div>
+        // Función para agregar o quitar el efecto de resplandor
+        function toggleAuroraEffect() {
+            auroraButton.classList.add("animate-double-aurora");
 
-            
-        <section class="py-12 bg-white overflow-hidden">
-            <div class="flex items-center">
-                <div class="marquee flex whitespace-nowrap">
-                    <span class="text-4xl mx-12 font-display">GOOGLE</span>
-                    <span class="text-4xl mx-12 font-display">NIKE</span>
-                    <span class="text-4xl mx-12 font-display">APPLE</span>
-                    <span class="text-4xl mx-12 font-display">ADIDAS</span>
-                    <span class="text-4xl mx-12 font-display">SPOTIFY</span>
-                    <span class="text-4xl mx-12 font-display">AIRBNB</span>
-                    <span class="text-4xl mx-12 font-display">GOOGLE</span>
-                    <span class="text-4xl mx-12 font-display">NIKE</span>
-                    <span class="text-4xl mx-12 font-display">APPLE</span>
-                    <span class="text-4xl mx-12 font-display">ADIDAS</span>
-                    <span class="text-4xl mx-12 font-display">SPOTIFY</span>
-                    <span class="text-4xl mx-12 font-display">AIRBNB</span>
-                </div>
-            </div>
-        </section>
+            // Después de 1 segundo, quitar el efecto
+            setTimeout(() => {
+                auroraButton.classList.remove("animate-double-aurora");
+            }, 1000); // El tiempo del efecto (1 segundo)
+        }
 
-        <!-- Proyectos Destacados -->
-        <section class="py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-display font-bold mb-16">Proyectos Seleccionados</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Proyecto 1 -->
-                    <div class="project-card relative overflow-hidden rounded-2xl">
-                        <img src="https://picsum.photos/800/600?random=1" alt="Proyecto plataforma digital" class="w-full h-full object-cover" loading="lazy">
-                        <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
-                            <h3 class="text-3xl font-display text-white mb-2">Plataforma Digital</h3>
-                            <p class="text-white mb-4">Una experiencia digital revolucionaria para una marca global</p>
-                            <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 2 -->
-                    <div class="project-card relative overflow-hidden rounded-2xl">
-                        <img src="https://picsum.photos/800/600?random=2" alt="Proyecto identidad de marca" class="w-full h-full object-cover" loading="lazy">
-                        <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
-                            <h3 class="text-3xl font-display text-white mb-2">Identidad de Marca</h3>
-                            <p class="text-white mb-4">Rebranding completo para una startup tecnológica</p>
-                            <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 3 -->
-                    <div class="project-card relative overflow-hidden rounded-2xl md:col-span-2">
-                        <img src="https://picsum.photos/1600/800?random=3" alt="Proyecto plataforma e-commerce" class="w-full h-full object-cover" loading="lazy">
-                        <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
-                            <h3 class="text-3xl font-display text-white mb-2">Plataforma E-commerce</h3>
-                            <p class="text-white mb-4">Experiencia de compra de próxima generación</p>
-                            <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-16">
-                    <a href="#" class="inline-block border-2 border-dark px-8 py-4 rounded-full font-medium hover:bg-dark hover:text-white transition-all">
-                        Ver todos los proyectos
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Servicios -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center mb-16">
-                    <h2 class="text-4xl font-display font-bold mb-6">Nuestros Servicios</h2>
-                    <p class="text-xl">
-                        Ofrecemos soluciones digitales integrales para ayudar a tu marca a destacar en el competitivo panorama actual.
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="p-8 rounded-xl hover:bg-light transition-all">
-                        <div class="text-5xl text-primary mb-6">
-                            <i class="fas fa-pencil-ruler"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Estrategia de Marca</h3>
-                        <p class="text-gray-600">
-                            Desarrollamos estrategias de marca completas que crean conexiones significativas con tu audiencia.
-                        </p>
-                    </div>
-                    
-                    <div class="p-8 rounded-xl hover:bg-light transition-all">
-                        <div class="text-5xl text-secondary mb-6">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Diseño Digital</h3>
-                        <p class="text-gray-600">
-                            Experiencias digitales hermosas y funcionales diseñadas para atraer y convertir a tus clientes.
-                        </p>
-                    </div>
-                    
-                    <div class="p-8 rounded-xl hover:bg-light transition-all">
-                        <div class="text-5xl text-primary mb-6">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4">Marketing de Crecimiento</h3>
-                        <p class="text-gray-600">
-                            Estrategias de marketing basadas en datos para acelerar tu crecimiento y maximizar el ROI.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sobre Nosotros -->
-        <section class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/2">
-                        <img src="https://picsum.photos/600/600?random=4" alt="Nuestro equipo trabajando" class="w-full rounded-2xl" loading="lazy">
-                    </div>
-                    <div class="md:w-1/2">
-                        <h2 class="text-4xl font-display font-bold mb-6">Somos un colectivo creativo</h2>
-                        <p class="text-xl mb-8">
-                            Fundada en 2010, hemos crecido hasta convertirnos en un equipo de estrategas, diseñadores y desarrolladores unidos por nuestra pasión por crear experiencias digitales excepcionales.
-                        </p>
-                        <div class="grid grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <h3 class="text-3xl font-display font-bold text-primary">50+</h3>
-                                <p class="text-gray-600">Miembros del equipo</p>
-                            </div>
-                            <div>
-                                <h3 class="text-3xl font-display font-bold text-secondary">200+</h3>
-                                <p class="text-gray-600">Proyectos entregados</p>
-                            </div>
-                        </div>
-                        <a href="#" class="inline-block border-2 border-dark px-8 py-4 rounded-full font-medium hover:bg-dark hover:text-white transition-all">
-                            Conoce más sobre nosotros
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Llamado a la Acción -->
-        <section class="py-20 bg-primary text-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-display font-bold mb-6">¿Listo para comenzar tu proyecto?</h2>
-                <p class="text-xl max-w-2xl mx-auto mb-8">
-                    Creamos algo increíble juntos. Ponte en contacto con nuestro equipo para discutir cómo podemos ayudar a dar vida a tu visión.
-                </p>
-                <a href="#" class="inline-block bg-white text-primary px-8 py-4 rounded-full font-medium hover:bg-opacity-90 transition-all">
-                    Contáctanos
-                </a>
-            </div>
-        </section>
-
-        <!-- Pie de Página -->
-        <footer class="bg-dark text-white py-16">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                    <div>
-                        <h3 class="text-2xl font-display font-bold mb-6">
-                            <img src="Images/Logo-sengicon-1024x586.png" alt="Logo Sengiconsa" class="h-12 inline-block" id="">
-                        </h3>
-                        <p class="text-gray-400">
-                            Creamos experiencias digitales que transforman marcas y negocios.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold mb-6">Proyectos</h4>
-                        <ul class="space-y-3">
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Todos los proyectos</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Casos de estudio</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Nuestro enfoque</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold mb-6">Compañía</h4>
-                        <ul class="space-y-3">
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Sobre nosotros</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contacto</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold mb-6">Conecta</h4>
-                        <div class="flex space-x-4 mb-6">
-                            <a href="https://www.facebook.com/profile.php?id=100038469349444" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/sengicon-s-a-826171200/" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
->        <script src="ejemplo.js"></script> 
-
-    </section>
-    <script src="animation.js"> </script>
+        // Ejecutar la función cada 5 segundos
+        setInterval(toggleAuroraEffect, 5000); // Cada 5 segundos
+    </script>
 </body>
 </html>
-
-
-
 

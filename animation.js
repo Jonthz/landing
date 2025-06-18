@@ -45,3 +45,14 @@ tooltip.addEventListener("mouseout", function() {
   tooltipContainer.style.display = "none";
 });
 
+const auroraButton = document.getElementById("auroraButton");
+function toggleAuroraEffect() {
+    auroraButton.classList.add("animate-double-aurora");
+    // Después de 1 segundo, quitar el efecto
+    setTimeout(() => {
+        auroraButton.classList.remove("animate-double-aurora");
+    }, 1000); // El tiempo del efecto (1 segundo)
+}
+
+// Ejecutar la función cada 5 segundos
+setInterval(toggleAuroraEffect, 10000); 

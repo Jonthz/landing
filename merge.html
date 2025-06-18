@@ -20,12 +20,14 @@
                         secondary: "#404B56",
                         accent: "#404B56",
                         dark: "#111111",
-                        light: "#F8F8F8"
+                        light: "#F8F8F8",
+                        glow: "#F5A623"
                     },
                     fontFamily: {
                         sans: ["Inter", "sans-serif"],
                         display: ["Bebas Neue", "sans-serif"]
                     }
+                    
                 }
             }
         }
@@ -43,6 +45,9 @@
                 <a href="#" class="hover:text-primary transition-colors">Servicios</a>
                 <a href="#" class="hover:text-primary transition-colors">Nosotros</a>
                 <a href="#" class="hover:text-primary transition-colors">Ideas</a>
+                <button href="#" id="auroraButton" class="bg-primary text-white px-6 py-2 rounded-lg border-2 border-transparent transition duration-300 font-semibold shadow hover:bg-opacity-90 transition-all">
+                    Obtén tu asesoría gratuita
+                </button>
             </div>
             <script src="ejemplo.js"></script>
             <button class="md:hidden text-2xl" id="h-refs">
@@ -89,7 +94,7 @@
                             Un portafolio web es una herramienta esencial para mostrar tus habilidades, proyectos y logros de manera profesional.
                         </span>
                     </span>
-                    es fundamental para destacar en el competitivo mundo laboral actual. Un portafolio bien diseñado no solo muestra tu trabajo, sino que también refleja tu personalidad y profesionalismo. Aquí te contamos por qué es importante:</p>
+                    es fundamental para destacar en el competitivo mundo laboral actual. Un portafolio bien diseñado no solo muestra tu trabajo, sino que también refleja tu personalidad y profesionalismo.</p>
                 </p>
             </div>
         </div>
@@ -162,7 +167,9 @@
 
         <!-- Plantillas PortFolioWebs -->
         <section class="py-20">
-        <h2 class="text-4xl font-display font-bold mb-16">Plantillas de Portafolio Web</h2>
+        <div class="text-center">
+            <h2 class="text-4xl font-display font-bold mb-16">Plantillas de Portafolio Web</h2>
+        </div>
         <div class="flex items-center justify-center mb-8 gap-4">
             <!-- Flecha izquierda -->
             <button id="prev-template" class="p-2 rounded-full bg-light hover:bg-primary hover:text-white transition">

@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
 
+:root {
+            --color-primary: #134B7C;  /* Fondo del botón */
+            --color-secondary: #404B56;  /* Borde y texto */
+            --color-accent: #404B56;  /* Acuerdo con la paleta */
+            --color-glow: #F5A623; /* Resplandor dorado-amarillo */
+            --color-white: #FFFFFF;
+        }
 .hero-text {
     font-size: clamp(2.5rem, 8vw, 6rem);
     line-height: 0.9;
@@ -33,6 +40,9 @@
 .fade-in {
     display: block;
     animation: fade 0.3s linear forwards;
+}
+.animate-double-aurora {
+    animation: double-aurora-effect 1s ease-out;
 }
 
 @keyframes marquee {
@@ -94,6 +104,28 @@
         opacity: 1;
     }
     
+}
+@keyframes double-aurora-effect {
+0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px var(--color-primary);
+}
+25% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 10px var(--color-glow); /* Resplandor dorado */
+}
+50% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px var(--color-primary);
+}
+75% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 10px var(--color-glow); /* Resplandor dorado */
+}
+100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px var(--color-primary);
+}
 }
 
 
