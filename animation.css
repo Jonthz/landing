@@ -3,15 +3,25 @@
 .hero-text {
     font-size: clamp(2.5rem, 8vw, 6rem);
     line-height: 0.9;
-    animation: moveText 3s ease-in-out infinite;
+    animation: moveText 1.5s ease-in-out 1;
 }
 .hero-text2{
     font-size: clamp(2.5rem, 8vw, 6rem);
     line-height: 0.9;
-    animation: moveText2 3s ease-in-out infinite;    
+    animation: moveText2 2.5s ease-in-out 1;
 
 }
+#logo-sengicon {
+    animation: moveLogo 1s ease-in-out 1;
+}
+#seeMoreBtn{
+    animation: moveVermas 2s ease-in-out 1;
 
+}
+#h-refs{
+    animation: moveHrefs 2s ease-in-out 1;
+
+}
 .project-card:hover .project-overlay {
     opacity: 1;
     transform: translateY(0);
@@ -19,6 +29,10 @@
 
 .marquee {
     animation: marquee 20s linear infinite;
+}
+.fade-in {
+    display: block;
+    animation: fade 0.3s linear forwards;
 }
 
 @keyframes marquee {
@@ -46,12 +60,42 @@
     transform: translateX(0%);
     }
 }
-.hero-text {
-    animation: moveText 2.5s ease-in-out 1;
+@keyframes moveLogo {
+    0% {
+        opacity: -1;
+    }
+    100% {
+        opacity: 1;
+    }
 }
-.hero-text2
-{   
-    visibility: visible;
-    animation: moveText2 5s ease-in-out 1;
 
+@keyframes moveVermas {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
+@keyframes moveHrefs {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade {
+
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+    
+}
+
+
+
+

@@ -28,7 +28,7 @@ async function welcome(){
     });
 
     setTimeout(() => {
-        window.location.href = 'ejemplo.html'; 
+        window.location.href = 'merge.html'; 
     }, 7200); 
 
 }
@@ -75,7 +75,7 @@ function typeDelete(elementId, speed, callback){
 
 const skipButton= document.getElementById("skipButton");
 
-skipButton.addEventListener('click', ( ) => window.location.href = 'ejemplo.html')
+skipButton.addEventListener('click', ( ) => window.location.href = 'merge.html')
 
 window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
@@ -86,6 +86,8 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 welcome();
+
+
 
 
 
