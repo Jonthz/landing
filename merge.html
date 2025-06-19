@@ -41,20 +41,43 @@
                 <img src="Images/Logo-sengicon-1024x586.png" alt="Logo Sengiconsa" class="h-20">
             </a>
             <div id="h-refs" class="hidden md:flex space-x-8">
-                <a href="#" class="hover:text-primary transition-colors">Proyectos</a>
-                <a href="#" class="hover:text-primary transition-colors">Servicios</a>
-                <a href="#" class="hover:text-primary transition-colors">Nosotros</a>
-                <a href="#" class="hover:text-primary transition-colors">Ideas</a>
-                <button href="#" id="auroraButton" class="bg-primary text-white px-6 py-2 rounded-lg border-2 border-transparent transition duration-300 font-semibold shadow hover:bg-opacity-90 transition-all">
+                <a href="#proyectos" class="hover:text-primary transition-colors">Proyectos</a>
+                <a href="#plantillas" class="hover:text-primary transition-colors">Plantillas</a>
+                <a href="#servicios" class="hover:text-primary transition-colors">Servicios</a>
+                <a href="#testimonios" class="hover:text-primary transition-colors">Testimonios</a>
+                <a href="#nosotros" class="hover:text-primary transition-colors">Nosotros</a>
+                <button id="auroraButton" class="bg-primary text-white px-6 py-2 rounded-lg border-2 border-transparent transition duration-300 font-semibold shadow hover:bg-opacity-90 transition-all">
                     Obtén tu asesoría gratuita
                 </button>
             </div>
             <script src="ejemplo.js"></script>
-            <button class="md:hidden text-2xl" id="h-refs">
+            <button class="md:hidden text-2xl" id="mobile-menu-button">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
     </header>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-50">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex justify-end mb-8">
+                <button id="close-mobile-menu" class="text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-6 items-center">
+                <a href="#proyectos" class="text-xl hover:text-primary transition-colors mobile-link">Proyectos</a>
+                <a href="#plantillas" class="text-xl hover:text-primary transition-colors mobile-link">Plantillas</a>
+                <a href="#servicios" class="text-xl hover:text-primary transition-colors mobile-link">Servicios</a>
+                <a href="#testimonios" class="text-xl hover:text-primary transition-colors mobile-link">Testimonios</a>
+                <a href="#nosotros" class="text-xl hover:text-primary transition-colors mobile-link">Nosotros</a>
+                <button id="mobile-aurora-button" class="bg-primary text-white px-6 py-3 rounded-lg border-2 border-transparent transition duration-300 font-semibold shadow hover:bg-opacity-90 mt-4">
+                    Obtén tu asesoría gratuita
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Section Hero -->
     <section class="min-h-screen flex items-center pt-20">
         <div class="container mx-auto px-6"> <!-- Creamos experiencias digitales que transforman-->
@@ -82,10 +105,10 @@
     <!-- Clientes -->
 
 
-    <section id="after-ver-mas" class="bg-gray-100 py-12" style="display: none;">
+    <section id="after-ver-mas" class="bg-gray-100 py-12" style="display: block;">
 
         <div class="container mx-auto flex items-start justify-center px-4" id="preguntaClave">
-            <div class="w-full h-96 max-w-screen-md flex flex-col items-center justify-start mb-8 bg-gray-50 p-6">
+            <div class="w-full h-70 max-w-screen-md flex flex-col items-center justify-start mb-8 bg-gray-50 p-6">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">¿Por qué tener un portafolio web?</h2>
                 <p class="text-lg text-gray-600 text-center">El contar con un
                     <span class="tooltip relative text-blue-800 group" id="tooltip">                 
@@ -118,89 +141,99 @@
         </section>
 
         <!-- Proyectos Destacados -->
-        <section class="py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-display font-bold mb-16">Proyectos Seleccionados</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Proyecto 1 -->
-                    <div class="project-card relative overflow-hidden rounded-2xl">
-                        <img src="https://picsum.photos/800/600?random=1" alt="Proyecto plataforma digital" class="w-full h-full object-cover" loading="lazy">
-                        <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
-                            <h3 class="text-3xl font-display text-white mb-2">Plataforma Digital</h3>
-                            <p class="text-white mb-4">Una experiencia digital revolucionaria para una marca global</p>
-                            <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 2 -->
-                    <div class="project-card relative overflow-hidden rounded-2xl">
-                        <img src="https://picsum.photos/800/600?random=2" alt="Proyecto identidad de marca" class="w-full h-full object-cover" loading="lazy">
-                        <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
-                            <h3 class="text-3xl font-display text-white mb-2">Identidad de Marca</h3>
-                            <p class="text-white mb-4">Rebranding completo para una startup tecnológica</p>
-                            <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 3 -->
-                    <div class="project-card relative overflow-hidden rounded-2xl md:col-span-2">
-                        <img src="https://picsum.photos/1600/800?random=3" alt="Proyecto plataforma e-commerce" class="w-full h-full object-cover" loading="lazy">
-                        <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
-                            <h3 class="text-3xl font-display text-white mb-2">Plataforma E-commerce</h3>
-                            <p class="text-white mb-4">Experiencia de compra de próxima generación</p>
-                            <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-16">
-                    <a href="#" class="inline-block border-2 border-dark px-8 py-4 rounded-full font-medium hover:bg-dark hover:text-white transition-all">
-                        Ver todos los proyectos
-                    </a>
+        <section id="proyectos" class="py-20">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-display font-bold mb-16">Proyectos Seleccionados</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Proyecto 1 -->
+            <div class="project-card relative overflow-hidden rounded-2xl">
+                <img src="https://picsum.photos/800/600?random=1" alt="Proyecto plataforma digital" class="w-full h-full object-cover" loading="lazy">
+                <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
+                    <h3 class="text-3xl font-display text-white mb-2">Plataforma Digital</h3>
+                    <p class="text-white mb-4">Una experiencia digital revolucionaria para una marca global</p>
+                    <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
                 </div>
             </div>
-        </section>
+            
+            <!-- Proyecto 2 -->
+            <div class="project-card relative overflow-hidden rounded-2xl">
+                <img src="https://picsum.photos/800/600?random=2" alt="Proyecto identidad de marca" class="w-full h-full object-cover" loading="lazy">
+                <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
+                    <h3 class="text-3xl font-display text-white mb-2">Identidad de Marca</h3>
+                    <p class="text-white mb-4">Rebranding completo para una startup tecnológica</p>
+                    <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
+                </div>
+            </div>
+            
+            <!-- Proyecto 3 -->
+            <div class="project-card relative overflow-hidden rounded-2xl md:col-span-2">
+                <img src="https://picsum.photos/1600/800?random=3" alt="Proyecto plataforma e-commerce" class="w-full h-full object-cover" loading="lazy">
+                <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 p-8 flex flex-col justify-end opacity-0 transform translate-y-10 transition-all duration-500">
+                    <h3 class="text-3xl font-display text-white mb-2">Plataforma E-commerce</h3>
+                    <p class="text-white mb-4">Experiencia de compra de próxima generación</p>
+                    <a href="#" class="text-white border-b-2 border-primary pb-1 w-max">Ver caso de estudio</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-16">
+            <a href="#" class="inline-block border-2 border-dark px-8 py-4 rounded-full font-medium hover:bg-dark hover:text-white transition-all">
+                Ver todos los proyectos
+            </a>
+        </div>
+    </div>
+</section>
         <!-- Panel de selección de plantillas -->
         
     
 
         <!-- Plantillas PortFolioWebs -->
-        <section class="py-20">
-        <div class="text-center">
-            <h2 class="text-4xl font-display font-bold mb-16">Plantillas de Portafolio Web</h2>
-        </div>
-        <div class="flex items-center justify-center mb-8 gap-4">
+        <section id="plantillas" class="py-20">
+    <div class="text-center">
+        <h2 class="text-4xl font-display font-bold mb-16">Plantillas de Portafolio Web</h2>
+    </div>
+    
+    <!-- Contenedor con espacio para las flechas -->
+    <div class="container mx-auto px-6 md:px-12 mb-8">
+        <div class="relative flex items-center justify-center">
             <!-- Flecha izquierda -->
-            <button id="prev-template" class="p-2 rounded-full bg-light hover:bg-primary hover:text-white transition">
+            <button id="prev-template" class="absolute left-0 z-10 p-3 rounded-full bg-white hover:bg-primary hover:text-white transition shadow-lg mx-2">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <!-- Lista de plantillas -->
-            <div id="template-list" class="flex overflow-x-auto gap-4 scrollbar-hide">
-                <!-- Los elementos se llenan por JS -->
+            
+            <!-- Contenedor con padding para las plantillas -->
+            <div class="w-full px-10 md:px-16">
+                <!-- Lista de plantillas -->
+                <div id="template-list" class="flex overflow-x-auto gap-4 scrollbar-hide pb-4">
+                    <!-- Los elementos se llenan por JS -->
+                </div>
             </div>
+            
             <!-- Flecha derecha -->
-            <button id="next-template" class="p-2 rounded-full bg-light hover:bg-primary hover:text-white transition">
+            <button id="next-template" class="absolute right-0 z-10 p-3 rounded-full bg-white hover:bg-primary hover:text-white transition shadow-lg mx-2">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-display font-bold mb-8 text-center">Vista previa de la Plantilla<h2>
-                <div class="flex justify-center">
-                    <iframe 
-                        id="plantilla-iframe"
-                        src="/plantillas/plantillaAdministracion.html" 
-                        title="Plantilla 1"
-                        class="w-full md:w-3/4 h-[700px] border-2 border-gray-200 rounded-xl shadow-lg"
-                        loading="lazy"
-                    ></iframe>
-                </div>
-            </div>
-        </section>
+    </div>
+    
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-display font-bold mb-8 text-center">Vista previa de la Plantilla</h2>
+        <div class="flex justify-center">
+            <iframe 
+                id="plantilla-iframe"
+                src="/plantillas/plantillaAdministracion.html" 
+                title="Plantilla 1"
+                class="w-full md:w-3/4 h-[400px] md:h-[700px] border-2 border-gray-200 rounded-xl shadow-lg"
+                loading="lazy"
+            ></iframe>
+        </div>
+    </div>
+</section>
 
 
         <!-- Servicios -->
-        <section class="py-20 bg-white">
+        <section id="servicios" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="max-w-4xl mx-auto text-center mb-16">
                     <h2 class="text-4xl font-display font-bold mb-6">Nuestros Servicios</h2>
@@ -244,7 +277,7 @@
         </section>
 
             <!-- Añadir esta sección donde quieras mostrar los testimonios -->
-    <section class="py-16 bg-gray-50">
+    <section id="testimonios" class="py-16 bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Testimonios de Clientes</h2>
@@ -260,30 +293,35 @@
     </section>
 
         <!-- Sobre Nosotros -->
-        <section class="py-20">
+        <section id="nosotros" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="md:w-1/2">
-                        <img src="https://picsum.photos/600/600?random=4" alt="Nuestro equipo trabajando" class="w-full rounded-2xl" loading="lazy">
+                        <img src="https://picsum.photos/600/600?random=4" alt="Nuestros fundadores" class="w-full rounded-2xl shadow-xl" loading="lazy">
                     </div>
                     <div class="md:w-1/2">
-                        <h2 class="text-4xl font-display font-bold mb-6">Somos un colectivo creativo</h2>
+                        <h2 class="text-4xl font-display font-bold mb-6">Pequeños en número, grandes en visión</h2>
                         <p class="text-xl mb-8">
-                            Fundada en 2010, hemos crecido hasta convertirnos en un equipo de estrategas, diseñadores y desarrolladores unidos por nuestra pasión por crear experiencias digitales excepcionales.
+                            Somos un dúo creativo de desarrolladores apasionados que creemos que las mejores ideas no necesitan grandes corporaciones para hacerse realidad. Nacimos con la misión de democratizar el acceso a portafolios web profesionales para todos los talentos, independientemente de sus habilidades técnicas.
                         </p>
                         <div class="grid grid-cols-2 gap-8 mb-8">
                             <div>
-                                <h3 class="text-3xl font-display font-bold text-primary">50+</h3>
-                                <p class="text-gray-600">Miembros del equipo</p>
+                                <h3 class="text-3xl font-display font-bold text-primary">15+</h3>
+                                <p class="text-gray-600">Tecnologías dominadas</p>
                             </div>
                             <div>
-                                <h3 class="text-3xl font-display font-bold text-secondary">200+</h3>
-                                <p class="text-gray-600">Proyectos entregados</p>
+                                <h3 class="text-3xl font-display font-bold text-secondary">24/7</h3>
+                                <p class="text-gray-600">Compromiso con la innovación</p>
                             </div>
                         </div>
-                        <a href="#" class="inline-block border-2 border-dark px-8 py-4 rounded-full font-medium hover:bg-dark hover:text-white transition-all">
-                            Conoce más sobre nosotros
-                        </a>
+                        <p class="text-lg text-gray-700 mb-6">
+                            No medimos nuestro éxito por el tamaño de nuestro equipo, sino por el impacto que podemos generar. Cada línea de código y cada diseño que creamos está impulsado por nuestra pasión por construir un futuro donde la presencia digital profesional sea accesible para todos.
+                        </p>
+                        <div class="p-5 bg-blue-50 rounded-lg border-l-4 border-primary">
+                            <p class="italic text-primary-800">
+                                "Comenzamos como dos desarrolladores con una idea, pero nuestra visión es convertirnos en la plataforma que revolucione cómo los profesionales se presentan al mundo."
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -296,14 +334,11 @@
                 <p class="text-xl max-w-2xl mx-auto mb-8">
                     Creamos algo increíble juntos. Ponte en contacto con nuestro equipo para discutir cómo podemos ayudar a dar vida a tu visión.
                 </p>
-                <a href="#" class="inline-block bg-white text-primary px-8 py-4 rounded-full font-medium hover:bg-opacity-90 transition-all">
-                    Contáctanos
-                </a>
             </div>
         </section>
 
         <!-- Formulario de Contacto -->
-        <section class="py-20 bg-light">
+        <section id="contactForm" class="py-20 bg-light">
             <div class="container mx-auto px-6">
                 <div class="max-w-5xl mx-auto">
                     <div class="flex flex-col md:flex-row gap-12 items-center">
@@ -362,16 +397,16 @@
                                         placeholder="tucorreo@ejemplo.com">
                                 </div>
                                 
-                                <!-- Teléfono con selector de país -->
+                                <!-- Teléfono con selector de país - VERSIÓN MEJORADA -->
                                 <div class="mb-6">
                                     <label for="telefono" class="block text-sm font-medium text-gray-700 mb-1">Teléfono (opcional)</label>
-                                    <div class="flex">
-                                        <!-- Contenedor para el selector de país -->
-                                        <div class="phone-select-container"></div>
+                                    <div class="flex flex-col sm:flex-row">
+                                        <!-- Contenedor para el selector de país - con ancho adaptativo -->
+                                        <div class="phone-select-container w-full sm:w-auto mb-2 sm:mb-0"></div>
                                         
                                         <!-- Campo para el número de teléfono -->
                                         <input type="tel" id="telefono" name="telefono"
-                                            class="flex-1 px-4 py-3 rounded-r-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+                                            class="w-full px-4 py-3 rounded-lg sm:rounded-l-none border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-all"
                                             placeholder="600 00 00 00">
                                     </div>
                                     <p class="mt-1 text-xs text-gray-500">Incluye tu número para un contacto más rápido.</p>
@@ -519,6 +554,16 @@
                     </div>
                 </div>
             </div>
+                    <!-- Copyright -->
+                <div class="border-t border-gray-800 mt-12 pt-8">
+                    <div class="container mx-auto px-6">
+                        <div class="flex flex-col md:flex-row justify-between items-center">
+                            <p class="text-gray-400 text-sm">
+                                © 2024-2025 Sengicon S.A. Todos los derechos reservados.
+                            </p>
+                        </div>
+                    </div>
+                </div>
         </footer>
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -527,12 +572,121 @@
         <script type="module" src="src/services/firebaseDatabase.js"></script>
         <script type="module" src="src/components/forms.js"></script>
         <script type="module" src="src/components/popup-form.js"></script>
-        <script type="module" src="src/ejemplo.js"></script>
+        <script type="module" src="ejemplo.js"></script>
 
     <!-- Asegúrate de cargar el script de testimonios -->
         <script type="module" src="src/components/testimonials.js"></script>
     </section>    
     <script type="module" src="animation.js"> </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Script para manejar el scroll suave en todos los enlaces del navbar
+        const navLinks = document.querySelectorAll('#h-refs a');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Obtener el ID de la sección desde el href
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    // Scroll suave hasta la sección
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Código existente para el botón de asesoría
+        const auroraButton = document.getElementById('auroraButton');
+        
+        if (auroraButton) {
+            auroraButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const formSection = document.getElementById('contactForm');
+                
+                if (formSection) {
+                    formSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+        
+        // Mostrar la navegación después de cargar la página
+        const nav = document.getElementById('nav');
+        if (nav) {
+            nav.style.display = 'flex';
+        }
+    });
+    </script>
+
+    <!-- Script para el menú móvil -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menú móvil
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const mobileAuroraButton = document.getElementById('mobile-aurora-button');
+        
+        if (mobileMenuButton && mobileMenu && closeMobileMenuButton) {
+            // Abrir menú
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevenir scroll
+            });
+            
+            // Cerrar menú
+            closeMobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = ''; // Restaurar scroll
+            });
+            
+            // Manejar clics en enlaces móviles
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    
+                    // Scroll a la sección
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }, 100);
+                    }
+                });
+            });
+            
+            // Botón de asesoría en móvil
+            if (mobileAuroraButton) {
+                mobileAuroraButton.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    
+                    const formSection = document.getElementById('contactForm');
+                    if (formSection) {
+                        setTimeout(() => {
+                            formSection.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }, 100);
+                    }
+                });
+            }
+        }
+    });
+</script>
 </body>
 </html>
 

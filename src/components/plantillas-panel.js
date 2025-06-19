@@ -56,11 +56,11 @@ window.addEventListener('DOMContentLoaded', () => {
             animation: fadeIn 0.3s ease-in forwards;
         }
         
-        /* Estilos simplificados para el carrusel */
+        /* Estilos mejorados para el carrusel */
         #template-list {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             overflow-x: auto;
             position: relative;
             padding: 1rem 0;
@@ -68,18 +68,28 @@ window.addEventListener('DOMContentLoaded', () => {
             scroll-behavior: smooth;
             scrollbar-width: none; /* Firefox */
             -ms-overflow-style: none; /* IE and Edge */
+            -webkit-overflow-scrolling: touch; /* Mejor desplazamiento en iOS */
         }
         
         #template-list::-webkit-scrollbar {
             display: none; /* Chrome, Safari, Opera */
         }
         
-        /* Tarjeta del carrusel */
+        /* Tarjeta del carrusel - responsive */
         .carousel-item {
             flex: 0 0 auto;
             transition: all 0.5s ease;
             margin: 0 0.5rem;
             transform-origin: center center;
+            width: 160px; /* Tamaño base más pequeño */
+            height: 120px; /* Tamaño base más pequeño */
+        }
+        
+        @media (min-width: 640px) {
+            .carousel-item {
+                width: 176px; /* 44 * 4 */
+                height: 128px; /* 32 * 4 */
+            }
         }
         
         /* Efectos de escala */
@@ -91,6 +101,7 @@ window.addEventListener('DOMContentLoaded', () => {
         .carousel-item.active {
             transform: scale(1);
             opacity: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         /* Espaciadores */
@@ -128,16 +139,16 @@ window.addEventListener('DOMContentLoaded', () => {
         templateList.innerHTML = '';
         templateItems = []; // Reiniciar el array
         
-        // Espaciador inicial
+        // Espaciador inicial - responsive
         const spacerStart = document.createElement('div');
         spacerStart.className = 'carousel-spacer';
-        spacerStart.style.width = 'calc(50% - 88px)';
+        spacerStart.style.width = 'calc(25% - 44px)'; // Más pequeño para móviles
         templateList.appendChild(spacerStart);
         
         templates.forEach((tpl, idx) => {
             const item = document.createElement('button');
             
-            item.className = `relative overflow-hidden rounded-lg transition-all duration-200 w-44 h-32 carousel-item
+            item.className = `relative overflow-hidden rounded-lg transition-all duration-200 carousel-item
                 ${idx === currentIndex ? 'active ring-2 ring-primary ring-offset-2' : 'hover:ring-1 hover:ring-gray-300'}`;
             
             item.innerHTML = `
@@ -146,7 +157,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     <div class="absolute inset-0 bg-black bg-opacity-30"></div>
                 </div>
                 <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-2">
-                    <span class="font-bold text-white text-center text-sm block">${tpl.name}</span>
+                    <span class="font-bold text-white text-center text-sm block truncate">${tpl.name}</span>
                 </div>
             `;
             
@@ -162,17 +173,17 @@ window.addEventListener('DOMContentLoaded', () => {
             templateItems.push(item); // Guardar referencia al elemento
         });
         
-        // Espaciador final
+        // Espaciador final - responsive
         const spacerEnd = document.createElement('div');
         spacerEnd.className = 'carousel-spacer';
-        spacerEnd.style.width = 'calc(50% - 88px)';
+        spacerEnd.style.width = 'calc(25% - 44px)'; // Más pequeño para móviles
         templateList.appendChild(spacerEnd);
         
         // Centrar después de renderizar
         setTimeout(centerActiveItem, 50);
     }
 
-    // Función corregida para centrar el elemento activo
+    // Función mejorada para centrar el elemento activo
     function centerActiveItem() {
         if (!templateItems[currentIndex]) {
             console.error("No se puede centrar: elemento no encontrado");
@@ -250,6 +261,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     prevBtn.onclick = (e) => {
         e.preventDefault();
+        e.stopPropagation(); // Prevenir propagación del evento
         
         if (isTransitioning) return;
         currentIndex = (currentIndex - 1 + templates.length) % templates.length;
@@ -260,6 +272,7 @@ window.addEventListener('DOMContentLoaded', () => {
     
     nextBtn.onclick = (e) => {
         e.preventDefault();
+        e.stopPropagation(); // Prevenir propagación del evento
         
         if (isTransitioning) return;
         currentIndex = (currentIndex + 1) % templates.length;
@@ -267,6 +280,11 @@ window.addEventListener('DOMContentLoaded', () => {
         smoothUpdateIframe();
         renderTemplateList();
     };
+
+    // Ajustar carrusel en cambios de orientación de dispositivo
+    window.addEventListener('orientationchange', () => {
+        setTimeout(centerActiveItem, 300); // Recentrar después de cambio de orientación
+    });
 
     console.log("Inicializando carrusel");
     renderTemplateList();

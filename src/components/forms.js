@@ -138,10 +138,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const wrapper = document.createElement('div');
         wrapper.className = 'relative inline-block';
         
-        // Botón selector con diseño mejorado - ECUADOR como predeterminado
+        // Botón selector con diseño mejorado
         const button = document.createElement('button');
         button.type = 'button';
-        button.className = 'flex items-center justify-between w-full px-4 py-3 bg-white border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all';
+        button.className = 'flex items-center justify-between w-full px-4 py-3 bg-white border border-gray-300 rounded-lg sm:rounded-r-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all';
         
         button.innerHTML = `
             <div class="flex items-center space-x-2">
@@ -226,11 +226,10 @@ document.addEventListener('DOMContentLoaded', function() {
         selectContainer.appendChild(wrapper);
         
         // Ajustar el estilo del contenedor para que se alinee con el input
-        selectContainer.style.display = 'flex';
-        selectContainer.style.alignItems = 'center';
+        selectContainer.style.display = 'block'; // Cambiado de 'flex' a 'block'
         
-        // Ajustar el ancho del botón para que sea compacto pero legible
-        button.style.minWidth = '90px';
+        // Ajustar el ancho del botón
+        button.style.width = '100%'; // En lugar de minWidth
     }
     
     function setupFormSubmission(form, fileInput, fileInfo) {
