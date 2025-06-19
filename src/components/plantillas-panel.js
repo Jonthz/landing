@@ -2,28 +2,28 @@ const templates = [
     {
         name: "Administración",
         src: "/plantillas/plantillaAdministracion.html",
-        img: "/Images/imgPlantillaAdmi.png"
+        img: "Images/imgPlantillaAdmi.png"
     },
     {
         name: "Salud",
         src: "/plantillas/plantillaSalud.html",
-        img: "/Images/imgPlantillaSalud.png"
+        img: "Images/imgPlantillaSalud.png"
     },
     // Agrega más plantillas para probar el efecto carrusel
     {
         name: "E-commerce",
         src: "/plantillas/plantillaAdministracion.html",
-        img: "/Images/imgPlantillaAdmi.png"
+        img: "Images/imgPlantillaAdmi.png"
     },
     {
         name: "Blog",
         src: "/plantillas/plantillaAdministracion.html",
-        img: "/Images/imgPlantillaAdmi.png"
+        img: "Images/imgPlantillaAdmi.png"
     },
     {
         name: "Portfolio",
         src: "/plantillas/plantillaAdministracion.html",
-        img: "/Images/imgPlantillaAdmi.png"
+        img: "Images/imgPlantillaAdmi.png"
     }
 ];
 
@@ -146,21 +146,52 @@ window.addEventListener('DOMContentLoaded', () => {
         templateList.appendChild(spacerStart);
         
         templates.forEach((tpl, idx) => {
-            const item = document.createElement('button');
+            // Quitar barra inicial de la ruta de imagen
+            const imgPath = tpl.img.startsWith('/') ? tpl.img.substring(1) : tpl.img;
             
+            const item = document.createElement('button');
             item.className = `relative overflow-hidden rounded-lg transition-all duration-200 carousel-item
                 ${idx === currentIndex ? 'active ring-2 ring-primary ring-offset-2' : 'hover:ring-1 hover:ring-gray-300'}`;
             
-            item.innerHTML = `
-                <div class="absolute inset-0">
-                    <img src="${tpl.img}" alt="${tpl.name}" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-2">
-                    <span class="font-bold text-white text-center text-sm block truncate">${tpl.name}</span>
-                </div>
-            `;
+            // Crear elemento de imagen por separado para mejor control
+            const itemContent = document.createElement('div');
+            itemContent.className = 'absolute inset-0';
             
+            // Crear imagen con manejador de errores
+            const img = document.createElement('img');
+            img.src = imgPath;
+            img.alt = tpl.name;
+            img.className = 'w-full h-full object-cover';
+            
+            // Manejar errores de carga de imagen
+            img.onerror = function() {
+                console.error(`Error cargando imagen: ${imgPath}`);
+                this.onerror = null;
+                this.src = 'Images/Logo-sengicon-1024x586.png'; // Usar logo como fallback
+            };
+            
+            itemContent.appendChild(img);
+            
+            // Overlay para la imagen
+            const overlay = document.createElement('div');
+            overlay.className = 'absolute inset-0 bg-black bg-opacity-30';
+            itemContent.appendChild(overlay);
+            
+            // Título del elemento
+            const titleContainer = document.createElement('div');
+            titleContainer.className = 'absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-2';
+            
+            const titleSpan = document.createElement('span');
+            titleSpan.className = 'font-bold text-white text-center text-sm block truncate';
+            titleSpan.textContent = tpl.name;
+            
+            titleContainer.appendChild(titleSpan);
+            
+            // Agregar todo al item
+            item.appendChild(itemContent);
+            item.appendChild(titleContainer);
+            
+            // Eventos
             item.onclick = () => {
                 if (isTransitioning) return;
                 currentIndex = idx;
@@ -171,6 +202,9 @@ window.addEventListener('DOMContentLoaded', () => {
             
             templateList.appendChild(item);
             templateItems.push(item); // Guardar referencia al elemento
+            
+            // Mensaje de depuración
+            console.log(`Plantilla añadida: ${tpl.name}, imagen: ${imgPath}`);
         });
         
         // Espaciador final - responsive
