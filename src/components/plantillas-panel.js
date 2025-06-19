@@ -2,28 +2,28 @@ const templates = [
     {
         name: "Administración",
         src: "/plantillas/plantillaAdministracion.html",
-        img: "Images/imgPlantillaAdmi.webp"
+        img: "/Images/imgPlantillaAdmi.webp"
     },
     {
         name: "Salud",
         src: "/plantillas/plantillaSalud.html",
-        img: "Images/imgPlantillaSalud.webp"
+        img: "/Images/imgPlantillaSalud.webp"
     },
     // Agrega más plantillas para probar el efecto carrusel
     {
         name: "E-commerce",
         src: "/plantillas/plantillaAdministracion.html",
-        img: "Images/imgPlantillaAdmi.webp"
+        img: "/Images/imgPlantillaAdmi.webp"
     },
     {
         name: "Blog",
         src: "/plantillas/plantillaAdministracion.html",
-        img: "Images/imgPlantillaAdmi.webp"
+        img: "/Images/imgPlantillaAdmi.webp"
     },
     {
         name: "Portfolio",
         src: "/plantillas/plantillaAdministracion.html",
-        img: "Images/imgPlantillaAdmi.webp"
+        img: "/Images/imgPlantillaAdmi.webp"
     }
 ];
 
