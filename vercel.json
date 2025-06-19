@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" },
+    { "source": "/merge", "destination": "/merge.html" }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/Images/(.*)", "dest": "/Images/$1" },
+    { "src": "/plantillas/(.*)", "dest": "/plantillas/$1" }
+  ]
+}

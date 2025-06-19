@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     if (skipButton) {
-        skipButton.addEventListener('click', () => window.location.href = 'merge.html');
+        skipButton.addEventListener('click', () => window.location.href = './merge.html');
         
         setTimeout(() => {
             skipButton.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
