@@ -2,8 +2,12 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  // Asegurarse de que merge.html y welcome.js sean incluidos
+  // Configuración base
+  base: './',
+  
+  // Una única configuración de build que combina todo
   build: {
+    outDir: 'dist',
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
@@ -11,17 +15,16 @@ export default defineConfig({
       },
     },
   },
-  // Configuración básica para tu proyecto
-  base: './',
+  
+  // Configuración del servidor de desarrollo
   server: {
     open: true
   },
-  build: {
-    outDir: 'dist'
-  },
-  // Asegurar que todos los recursos sean copiados correctamente
+  
+  // Directorio para archivos estáticos
   publicDir: 'public',
-  // Resolver problemas de rutas
+  
+  // Aliases para importaciones
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
